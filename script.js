@@ -189,4 +189,198 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // === Certifications & Training Logic ===
+    const certGrid = document.getElementById('cert-grid');
+    const certTabs = document.querySelectorAll('.cert-tab-btn');
+
+    const certificates = [
+        // Workshops
+        {
+            title: "Master Backtracking Masterclass",
+            org: "Scaler",
+            year: "2025",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_Scaler_MasterBacktracking_Masterclass_2025.jpg",
+            icon: "fas fa-code-branch"
+        },
+        {
+            title: "Data Science & Machine Learning Workshop",
+            org: "Techosa",
+            year: "2022",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_Techosa_DataScience_MachineLearning_Workshop_2022.jpg",
+            icon: "fas fa-brain"
+        },
+        {
+            title: "Embedded Systems & Robotics Workshop",
+            org: "Techosa",
+            year: "2022",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_Techosa_EmbeddedSystems_Robotics_Workshop_2022.jpg",
+            icon: "fas fa-microchip"
+        },
+        {
+            title: "Ethical Hacking / Cybersecurity Workshop",
+            org: "HackingFlix",
+            year: "2024",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_HackingFlix_EthicalHacking_Workshop_2024.png",
+            icon: "fas fa-user-shield"
+        },
+        {
+            title: "Resume & LinkedIn Creation Workshop",
+            org: "IEEE",
+            year: "2025",
+            category: "Workshops IEEE",
+            image: "assets/certificates/AdarshA_IEEE_Resume_LinkedIn_Workshop_2025.jpg",
+            icon: "fab fa-linkedin"
+        },
+        {
+            title: "Web Development Workshop",
+            org: "ICFOSS",
+            year: "2024",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_ICFOSS_WebDevelopment_Workshop_2024.jpg",
+            icon: "fas fa-laptop-code"
+        },
+        {
+            title: "ECE / BSNL Workshop",
+            org: "Sidhanta '23",
+            year: "2023",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_Sidhanta_Workshop_2023.jpg",
+            icon: "fas fa-broadcast-tower"
+        },
+        {
+            title: "IMPACT 2023 Event",
+            org: "Chrysalis",
+            year: "2023",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_Chrysalis_IMPACT_Event_Participation_2023.jpg",
+            icon: "fas fa-award"
+        },
+        {
+            title: "Startup & Innovation Conclave",
+            org: "IEDC",
+            year: "2025",
+            category: "Workshops",
+            image: "assets/certificates/AdarshA_IEDC_Startup_Innovation_Conclave_2025.jpg",
+            icon: "fas fa-lightbulb"
+        },
+        // Bootcamps
+        {
+            title: "Data Science with Python Bootcamp",
+            org: "LetsUpgrade",
+            year: "2024",
+            category: "Bootcamps",
+            image: "assets/certificates/AdarshA_LetsUpgrade_DataScience_Python_Bootcamp_2024.jpg",
+            icon: "fab fa-python"
+        },
+        {
+            title: "Flutter Bootcamp",
+            org: "LetsUpgrade",
+            year: "2024",
+            category: "Bootcamps",
+            image: "assets/certificates/AdarshA_LetsUpgrade_Flutter_Bootcamp_2024.jpg",
+            icon: "fas fa-mobile-alt"
+        },
+        // Internships
+        {
+            title: "Python & Web Design Internship",
+            org: "CodeDesign Technologies",
+            year: "2024 (7 Days)",
+            category: "Internships",
+            image: "assets/certificates/AdarshA_Python_WebDesign_Internship_CodeDesign_2024.jpg",
+            icon: "fas fa-file-code"
+        },
+        {
+            title: "Python & Data Science Internship",
+            org: "Srishti / Technopark",
+            year: "2024 (1 Week)",
+            category: "Internships",
+            image: "assets/certificates/AdarshA_Python_DataScience_Internship_Srishti_2024.jpg",
+            icon: "fas fa-database"
+        },
+        // Govt / Institutional
+        {
+            title: "Industrial Training on Fiber Optics",
+            org: "BSNL",
+            year: "2025",
+            category: "Govt",
+            image: "assets/certificates/AdarshA_BSNL_FiberOptics_IndustrialTraining_2025.jpg",
+            icon: "fas fa-network-wired"
+        },
+        {
+            title: "Machine Learning Vocational Training",
+            org: "NSDC / Skill India",
+            year: "2025",
+            category: "Govt",
+            image: "assets/certificates/AdarshA_NSRC_MachineLearning_VocationalTraining_2025.jpg",
+            icon: "fas fa-robot"
+        },
+        {
+            title: "Machine Learning Workshop",
+            org: "ICFOSS / Govt of Kerala",
+            year: "2025",
+            category: "Govt",
+            image: "assets/certificates/AdarshA_ICFOSS_MachineLearningWorkshop_2025.jpg",
+            icon: "fas fa-university"
+        },
+        // IEEE
+        {
+            title: "Resume & LinkedIn Creation Workshop",
+            org: "IEEE",
+            year: "2025",
+            category: "IEEE",
+            image: "assets/certificates/AdarshA_IEEE_Resume_LinkedIn_Workshop_2025.jpg",
+            icon: "fab fa-linkedin"
+        },
+        // NPTEL
+        {
+            title: "Programming in Java",
+            org: "NPTEL",
+            year: "2024",
+            category: "NPTEL",
+            image: "assets/certificates/AdarshA_NPTEL_ProgrammingInJava_2024.jpg",
+            icon: "fab fa-java"
+        }
+    ];
+
+    function renderCertificates(filter) {
+        if (!certGrid) return;
+
+        certGrid.innerHTML = '';
+        const filteredCerts = certificates.filter(cert => cert.category.includes(filter));
+
+        filteredCerts.forEach(cert => {
+            const card = document.createElement('div');
+            card.className = 'cert-card glass';
+            card.innerHTML = `
+                <div class="cert-icon"><i class="${cert.icon}"></i></div>
+                <div class="cert-content">
+                    <h3 class="cert-org">${cert.org}</h3>
+                    <h3>${cert.title}</h3>
+                    <p class="cert-year">${cert.year}</p>
+                </div>
+                <a href="${cert.image}" target="_blank" class="btn btn-secondary cert-view-btn">View Certificate</a>
+            `;
+            certGrid.appendChild(card);
+        });
+    }
+
+    if (certTabs.length > 0) {
+        certTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                certTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                // Render certificates for selected category
+                renderCertificates(tab.getAttribute('data-category'));
+            });
+        });
+
+        // Initial render
+        renderCertificates('Workshops');
+    }
 });

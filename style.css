@@ -681,6 +681,7 @@ img {
 
 .resume-cta {
     text-align: center;
+    margin-top: 4rem;
 }
 
 /* Contact Section */
@@ -796,6 +797,128 @@ img {
 .scroll-top.scroll-top-active {
     opacity: 1;
     visibility: visible;
+}
+
+/* Certifications Section */
+.cert-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.cert-tab-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.cert-tab-btn:hover {
+    color: var(--primary-color);
+    background: rgba(0, 247, 255, 0.1);
+    border-color: rgba(0, 247, 255, 0.3);
+}
+
+.cert-tab-btn.active {
+    background: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    min-height: 200px;
+}
+
+.cert-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cert-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cert-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.cert-org {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.cert-year {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.cert-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.cert-view-btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.light-theme .cert-tab-btn {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .cert-tab-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .cert-tabs {
+        gap: 0.5rem;
+    }
+
+    .cert-tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Animations Core */
