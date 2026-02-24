@@ -206,13 +206,17 @@ img {
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--text-color);
+    color: #ffffff;
     letter-spacing: 2px;
 }
 
 .logo span {
-    color: var(--primary-color);
-    text-shadow: 0 0 8px var(--primary-glow);
+    color: inherit;
+    text-shadow: none;
+}
+
+.light-theme .logo {
+    color: #000000;
 }
 
 .nav-links ul {
